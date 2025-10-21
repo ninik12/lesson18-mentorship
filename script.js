@@ -10,12 +10,12 @@ function ajaxUsers() {
     request.addEventListener('load', function () {   //ჩვენს მოთხოვნის ობოექტზე addEventListener-ის საშუალებით უნდა მივუმაგროთ load ივენთი, რომელიც მაშინ ირთვება, როდესაც მოთხოვნა წარმატებით შესრულდება, ფუნქციის ტანში კი ავღწერთ წარმატების შემთხვევაში რა უნდა მოხდეს
         let responseInfo = this.response;
         let responseInfoJs = JSON.parse(responseInfo);
-        // console.log(responseInfoJs);
+        console.log(responseInfoJs);
 
         let ulElement = document.createElement('ul')
         responseInfoJs.forEach((element) => {
             let liEl = document.createElement('li');
-            liEl.innerText = `${element.username}---- adrdress: ${element.address.city} --- phone:${element.phone}`;
+            liEl.innerText = `${element.username}---- address: ${element.address.city} --- phone:${element.phone}`;
             ulElement.appendChild(liEl);
         });
         divElement.appendChild(ulElement);
@@ -29,7 +29,7 @@ function ajaxUsers() {
     request.send() //გავაგზავნოთ ეს მოთხოვნა
 }
 
-// ajaxUsers()
+ajaxUsers()
 
 //2. fetch
 fetch('https://jsonplaceholder.typicode.com/users', {
